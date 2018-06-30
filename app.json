@@ -1,0 +1,33 @@
+{
+  "pages":[
+    "pages/one/index",
+    "pages/one/edit",
+	"pages/one/essay",
+    "pages/one/story",
+    "pages/index/index",
+    "pages/index/map",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#FFF",
+    "navigationBarTitleText": "MiniParamOne",
+    "navigationBarTextStyle":"black",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#FFF",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance":30
+  } ,
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/one/index",
+      "text": "ONE",
+      "iconPath": "./source/one-un.png",
+      "selectedIconPath": "./source/one.png"
+    },{
+        "pagePath": "pages/index/index",
+        "text": "设置",
+        "iconPath": "./source/set-un.png",
+        "selectedIconPath": "./source/set.png"
+    }]
+  }
+}
