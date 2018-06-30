@@ -1,0 +1,22 @@
+<!--index.wxml-->
+  <view class='user'>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <textarea  disabled  style="font-size:15px;width:70%;color:{{fontColor}}" value='{{motto}}'></textarea>
+  </view>
+
+  <view class='item' wx:for="{{itemList}}" bindtap='getInfo' data-id="{{index}}">
+  <block wx:if="{{index==0}}"><label style='float:left;width:50%'>{{item}}</label><label style='margin-left:40%;text-align:right;'>{{itemValue[0].netType}}</label></block>
+  <block wx:elif="{{index==1}}"><label style='float:left;width:50%'>{{item}}</label><label style='margin-left:40%;text-align:right;'>➡️</label></block>
+    <block wx:elif="{{index==2}}"><label style='float:left;width:50%'>{{item}}</label><label style='text-align:right;margin-left:40%;'>110</label></block>
+       <block wx:elif="{{index==3}}"><label style='float:left;width:50%'>{{item}}</label><label style='text-align:right;margin-left:40%;'>➡️</label></block>
+<block wx:elif="{{index==4}}"><label style='float:left;width:50%'>{{item}}</label><label style='text-align:right;margin-left:40%;'>➡️</label></block>
+<block wx:elif="{{index==5}}"><label style='float:left;width:50%'>{{item}}</label><label style='margin-left:40%;text-align:right;'>{{itemValue[0].screenBright}}</label></block>
+<block wx:elif="{{index==6}}"><label style='float:left;width:50%'>{{item}}</label><input type='number ' placeholder='0~1'  bindconfirm="bindconfirm" style='margin-left:40%;text-align:right;'></input></block>
+  </view>
+

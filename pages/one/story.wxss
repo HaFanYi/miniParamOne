@@ -1,0 +1,23 @@
+/* pages/one/story.wxss */
+
+.img {
+margin:0 30%;
+width: 40%;
+height: 250px;
+}
+.title,.desc,.director,.info {
+    display: block;
+    text-align: center;
+}
+.title {
+    margin-top: 10px;
+    width: 100%;
+    font-size: 22px;
+}
+.desc,.director,.info {
+    margin-left: 5%;
+    width: 90%;
+}
+.desc {font-size: 15px; margin-top: 15px}
+.director {font-size: 13px;color: lightgray;margin-top: 20px}
+.info {display: block;font-size: 15px;margin-top: 40px}

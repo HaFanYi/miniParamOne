@@ -1,0 +1,92 @@
+<!-- 显示播放控制条 -->
+<template name="audio-control">
+<cover-view catchtap='pauseAudio' wx:if="{{isPlay==1 && playNow==1}}" class='float-btn'><cover-image src='../../source/start-1.png'></cover-image><cover-image src='../../source/music.gif'></cover-image></cover-view>
+<cover-view catchtap='playAudio' wx:if="{{isPlay==1 && playNow==0}}" class='float-btn'><cover-image src='../../source/pause-1.png'></cover-image><cover-image src='../../source/music.gif'></cover-image></cover-view>
+</template>
+
+<!-- 连载 -->
+<template name="serial">
+<view wx:if="{{isType==2}}" style='position: fixed;margin-top: 20%;right: 0;height: 30px;width:30px' bindtap='showSerialNum'><image style="width: 30px; height: 30px;" src='../../source/serial.png'></image></view>
+<view  wx:if="{{isShowSerial}}" style='position:fixed;margin-top: 22%;width:86%;background-color:black'>
+<view wx:for="{{serial_list}}"  style='text-align:center;width:26px;display:inline-block;font-size:20px;margin-left:3px'> 
+ <label   wx:if="{{currentid==item}}" style='color:orange;width:26px;display:inline-block;'  catchtap="gotoNewPage" data-id="{{item}}">{{index+1}}</label>
+ <label  wx:else style='color:white;width:26px;display:inline-block;' catchtap="gotoNewPage" data-id="{{item}}">{{index+1}}</label>
+ </view>
+</view>
+</template>
+
+<!--影视图片  -->
+<template name="movie_pic">
+<swiper  autoplay="{{true}}" interval="{{3000}}" duration="{{500}}" circular="{{true}}">
+<block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" style='margin-left:5%;width:90%'  mode='widthFix'/>
+    </swiper-item>
+  </block>
+</swiper>
+</template>
+<!-- 标题和文章作者 -->
+<template name="title"><view class='title'>{{title}}</view></template>
+<template name="author"><view class='hp_author'>文/{{user_name}}</view></template>
+
+
+<!-- 朗读者信息 -->
+<template name="anchor">
+<view bindtap='playAudio' class='audio' wx:if="{{anchor!='' && playNow==0}}">
+<image wx:if="{{isPlay==1}}" src='../../source/voice.png'/><image wx:else src='../../source/voice_2.png'/>
+<label class='label1'>有声阅读|{{anchor}}</label><label class='duration'>{{time}}</label>
+</view>
+<view bindtap='pauseAudio' class='audio' wx:if="{{anchor!='' && playNow==1}}">
+<image wx:if="{{isPlay==1}}" src='../../source/voice.png'/><image wx:else src='../../source/voice.png'/>
+<label class='label1'>有声阅读|{{anchor}}</label><label class='duration'>{{time}}</label>
+</view>
+</template>
+
+<!-- 提问者 -->
+<template name="asker">
+<view style='font-size:12px;margin-left:0;margin-bottom:5px'>{{asker}}问:</view>
+<text>{{question_content}}</text>
+<view style='font-size:12px;padding-top:10px;margin-left:0;margin-bottom:5px;border-top:1px solid lightgray;'>{{answer}}答:</view>
+</template>
+
+
+<!-- 作者信息和责任说明 -->
+<template name="autho-info-intro"> 
+<view class='introduce' style='margin-left:0'>{{author_introduce}}</view>
+<view class='introduce' style='margin-left:0'>{{copyright}}</view>
+<view wx:if="{{is_type==2}}">
+<button wx:if="{{lastid>0}}" style='float:left;left:0' bindtap="gotoNewPage" data-id="{{lastid}}">←前一章</button>
+<button wx:else style='float:left;left:0;color:gray'>←前一章</button>
+<button wx:if="{{nextid>0}}" style='float:right;right:0' bindtap="gotoNewPage" data-id="{{nextid}}">后一章→</button>
+<button wx:else style='float:right;right:0;color:gray'>后一章:即将更新</button>
+</view>
+<view class='author' style='margin-left:0'>
+<label  class='label-author'>作者</label>
+<label class='label-line'></label>
+</view>
+<view class='author-info' style='margin-left:0'>
+<image src='{{web_url}}'></image>
+<view class='author-name'>{{user_name}} {{wb_name}}
+<label class='author-summary'>{{summary}}</label></view>
+</view>
+</template>
+
+<!-- 评论 -->
+<template name="comment">
+<view class='author'>
+<label  class='label-author'>评论</label>
+<label class='label-line'></label>
+</view>
+
+<view class='comment' wx:for="{{comments}}" wx:for-index="idx" wx:for-item="item">
+<view class='touser'>
+<view class='comment-info' >
+<image src='{{item.user.web_url}}'></image>
+<view class='comment-name'><label>{{item.user.user_name}}</label>
+<label class='comment-date'>{{item.input_date}}</label></view>
+</view>
+<view wx:if="{{item.touser!=null}}" class='other-comm'>{{item.touser.user_name}}:{{item.quote}}</view>
+<view class='comm-content' style='font-size:13px;color:darkgray'>{{item.content}}</view>
+</view>
+</view>
+</template>

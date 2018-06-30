@@ -1,0 +1,43 @@
+/* pages/one/edit.wxss */
+
+/* 编辑 */
+
+.model-view {
+ position: fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  background:rgba(0,0,0,0.8);
+  overflow: hidden;
+}
+.model-edit-img {
+ width: 90%;
+ height: 200px;
+  margin-top: 10%;
+  margin-left: 5%;
+}
+.model-authors {
+  display: block;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 10px;
+}
+.model-content {
+  color: white;
+  margin-top: 15px;
+  margin-left: 5%;
+  width: 90%;
+   text-align: left; 
+}
+.share-edit {
+    width: 60px;
+    height: 60px;
+    margin-left: 40%;
+    margin-top: 100px;
+    border-radius: 60px;
+    border: 1px solid white;
+    font-size: 13px;
+     padding-top: 18px;
+    text-align: center;
+}

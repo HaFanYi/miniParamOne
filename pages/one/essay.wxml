@@ -1,0 +1,55 @@
+<!--pages/one/essay.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<import src="../template/common.wxml" />
+<scroll-view scroll-y="true">
+
+<!-- 音频播放控制条 -->
+<template is="audio-control" data="{{isPlay:Play[0].isPlay,playNow:Play[0].playNow}}" />
+<!-- <template is="serial" data="{{isType:Type,isShowSerial:isShowSerial,serial_list:essay.serial_list,currentid:essay.id}}"></template> -->
+
+<!-- 影视图片 -->
+<view wx:if="{{Type==5}}">
+<template is="movie_pic" data="{{imgUrls:[movied.detailcover,movied.photo[0]]}}"> </template>
+</view>
+
+<!-- 标题和作者 -->
+<view wx:if="{{Type==1}}">
+<template is="title" data="{{title:essay.hp_title}}"></template>
+<template is="author" data="{{user_name:essay.author[0].user_name}}"></template>
+</view>
+<view wx:elif="{{Type==2}}">
+<template is="title" data="{{title:essay.title}}"></template>
+<template is="author" data="{{user_name:essay.author_list[0].user_name}}"></template>
+</view>
+<view wx:elif="{{Type==3}}">
+<template is="title" data="{{title:essay.question_title}}"></template>
+<template is="asker" data="{{asker:essay.asker.user_name,question_content:essay.question_content,answer:essay.answerer.user_name}}"></template>
+</view>
+<view wx:elif="{{Type==5}}">
+<template is="title" data="{{title:essay.title}}"></template>
+<template is="author" data="{{user_name:essay.author_list[0].user_name}}"></template>
+</view>
+
+<view wx:if="{{Type==5}}">
+<button bindtap='gotoStory' type='primary'  style='margin-left:2%;width:100px'>电影详情</button>
+</view>
+
+<!-- 音频播放信息 -->
+<template is="anchor" data="{{anchor:essay.anchor,playNow:Play[0].playNow,time:Time}}"></template>
+
+<!-- 文章内容 -->
+<template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+
+<!--责任编辑和版权信息、作者信息  -->
+<view wx:if="{{Type==1}}">
+<template is="autho-info-intro" data="{{author_introduce:essay.hp_author_introduce,web_url:essay.author[0].web_url,user_name:essay.author[0].user_name,wb_name:essay.author[0].wb_name,summary:essay.author[0].summary}}"></template>
+</view>
+<view wx:elif="{{Type==2 || Type==3 || Type==5}}">
+<template is="autho-info-intro" data="{{author_introduce:essay.charge_edt,web_url:essay.author_list[0].web_url,user_name:essay.author_list[0].user_name,wb_name:essay.author_list[0].wb_name,summary:essay.author_list[0].summary,copyright:essay.copyright,is_type:Type,lastid:essay.lastid,nextid:essay.nextid}}"></template>
+</view>
+
+<!-- 评论 -->
+<template is="comment" data="{{comments:comment}}"></template>
+
+</scroll-view>
+

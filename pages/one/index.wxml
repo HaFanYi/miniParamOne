@@ -1,0 +1,69 @@
+<!--pages/one/index.wxml-->
+<import src="../template/common.wxml" />
+<view class='top'>
+  <picker mode="date" value="{{selectDate}}" bindchange="bindDateChange" start="2012-10-07" end="{{endDate}}">
+    <view><label class='day'>{{Day}}</label> <label class='YM'>{{Month}}.{{Year}}</label></view>
+  </picker>
+<view wx:if="{{date=='今天'}}" animation="{{animationData}}"  class='weather'>{{weather.city_name}}·{{weather.climate}} {{weather.temperature}}℃</view>
+<view wx:else class='weather' animation="{{animationDay}}"  bindtap='showTodayView' style='border:1px solid #F5F5F5;width:30px; text-align:center'>今天</view>
+ </view> 
+  
+ <view class='section'>
+
+ <template is="audio-control" data="{{isPlay:Play[0].isPlay,playNow:Play[0].playNow}}" /> 
+
+ <view class='content' wx:for="{{content}}" wx:for-index="idx" wx:for-item="item"> 
+ <view wx:if="{{item.category==0}}">  
+<image bindtap='showModelView' data-id="{{idx}}" class='hp_img' src='{{item.img_url}}' mode='aspectFill'></image>
+<label class='hp_author'>{{item.title}}|{{item.pic_info}}</label>
+<text class='hp_content'>{{item.forward}}</text>
+<label class='text-author'>{{item.words_info}}</label>
+<view class='share-view'>
+<button class='share-btn' open-type="share" data-id="{{idx}}">分享</button>
+<button class='edit-btn' bindtap='editText'  data-id="{{idx}}">编辑</button>
+</view>
+</view>
+
+<view  wx:else>
+ <view class='item-cate' wx:if="{{item.category==1}}">
+<label wx:if="{{item.tag_list[0]==null}}">-阅读-</label>
+<label wx:else>-{{item.tag_list[0].title}}-</label>
+ </view>
+<view class='item-cate' wx:elif="{{item.category==2}}">-连载-</view>
+<view class='item-cate' wx:elif="{{item.category==3}}">-问答-</view>
+<view class='item-cate' wx:elif="{{item.category==4}}">
+<label wx:if="{{item.tag_list[0]==null}}">-音乐-</label>
+<label wx:else>-{{item.tag_list[0].title}}-</label></view>
+<view class='item-cate' wx:else>-影视-</view> 
+<view class='item-title'>{{item.title}}</view>
+<view  class='item-author'>
+<label wx:if="{{item.category != 3}}">文/{{item.author.user_name}}</label>
+<label wx:else>{{item.author.user_name}}</label> 
+</view>
+<view bindtap='gotoDetailPage' data-id='{{item.item_id}}' data-cate='{{item.tag_list[0]}}' data-cateid='{{item.category}}'  class='item-img'>
+ <image wx:if="{{item.category!=4}}" class='img-com' src='{{item.img_url}}' mode='scaleToFill'></image> 
+ <image wx:else class='img-music' bindtap='startMusic' data-url="{{item.share_url}}"  src='{{item.img_url}}'></image> 
+</view>
+<view class='item-music-subtitle' wx:if="{{item.category==4}}">{{item.subtitle}} · {{item.author.user_name}} | {{item.subtitle}}</view>
+<view bindtap='gotoDetailPage' data-id='{{item.item_id}}' data-cate='{{item.tag_list[0]}}' data-cateid='{{item.category}}' class='item-forward'>{{item.forward}}</view>
+<view  class="item-subtitle" wx:if="{{item.category==5}}">——《{{item.subtitle}}》</view>
+<label class='date-label'>{{date}}</label>
+<button class='share-other-btn' hover-stop-propagation='true' open-type="share" data-id="{{idx}}">分享</button>
+</view>
+
+ </view>  
+ </view> 
+
+
+
+<!-- 点击图片时弹出遮罩层 -->
+<view bindtap='hiddenView' class='model-view' wx:if="{{is_show_view>=0}}">
+<label class='model-title'>{{content[is_show_view].volume}}</label>
+<image data-url="{{content[is_show_view].download_img_url}}" bindlongpress='saveImg' class='model-img' src='{{content[is_show_view].img_url}}'></image>
+<label class='model-author'>{{content[is_show_view].title}}|{{content[is_show_view].pic_info}}</label>
+</view>
+
+
+
+
+

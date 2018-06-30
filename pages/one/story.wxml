@@ -1,0 +1,10 @@
+<!-- pages/one/story.wxml -->
+ <scroll-view>
+<image class='img' src='{{Image}}'></image>
+<label class='title'>{{story.title}}</label>
+<label class='desc'>{{summary}}</label>
+
+<text class='director'>{{story.info}}</text>
+
+<text class='info'>{{story.officialstory}}</text>
+</scroll-view> 

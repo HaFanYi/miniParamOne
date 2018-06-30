@@ -1,0 +1,6 @@
+<view class='model-view' >
+<image data-url="{{img_url}}" bindtap='selectImg' class='model-edit-img' src='{{img_url}}'></image>
+<label class='model-authors'>{{words_info}}</label>
+<textarea auto-focus auto-height="true" bindblur="bindTextAreaBlur" show-confirm-bar=''  class='model-content'  value='{{forward}}'></textarea>
+<button class='share-edit'  open-type="share">分享</button>
+</view>

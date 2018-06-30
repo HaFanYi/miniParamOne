@@ -1,0 +1,84 @@
+/* pages/one/essay.wxss */
+ @import "../../wxParse/wxParse.wxss"; 
+  
+.fr-pspace-a0 {
+	 display: block;margin-bottom: 5px
+} 
+ view {
+	margin-top: 10px;
+} 
+.fr-pspace-a0,view,.one-img-container {
+	width: 90%;	font-size: 15px;color: black;
+}   
+
+ .title,.hp_author,.fr-pspace-a0,view,.introduce,author,author-info,.one-img-container{
+	 margin-left: 5%;
+ }
+ .title {
+	 font-size: 22px; color: black;margin-bottom: 30px;
+ }
+ .hp_author {
+	 font-size: 12px; color: darkgray;margin-bottom: 20px;
+ }
+ .introduce {
+	 margin-top: 20px; font-size: 12px;color: lightgray
+ }
+ .label-author {
+	 display: block;margin-top: 20px;
+ }
+ .label-line {
+	 display: block;margin-top: 5px;width: 50px;border-top-color: black;border-top: 5px solid black
+ }
+ .author-info {
+	display: flex; direction: row;  
+ }
+ .author-info>image {
+	 margin-left: 0;width: 35px;height: 35px;border-radius: 35px;
+ }
+ .author-name {
+	 margin-top: 0px;margin-left: 5px;
+ }
+ .author-summary {
+	  display: block; margin-bottom: 0px;height: 15px;font-size: 12px;color: lightgray
+ }
+
+.comment {
+	margin-left: 0;width: 100%;margin-bottom: 10px
+}
+.touser {
+	width: 90%;
+	border-bottom-color: lightgray;border-bottom: 1px solid lightgray;
+}
+ .comment-info {
+	width: 100%;margin-top: 0px; margin-left: 0;display: flex;direction: row;
+ }
+ .comment-info>image {
+	 margin-left: 0;width: 20px;height: 20px;border-radius: 20px;
+ }
+  .comment-name {
+	 margin-top: 0px;margin-left: 5px;
+ } 
+ .comment-date {
+	 float: right;height: 15px;font-size: 10px;color: lightgray;margin-top:2px
+ }
+ .other-comm {
+     border: 1px solid lightgray;font-size: 13px;color: darkgray
+ }
+
+ .audio {
+     margin:90px 2% 60px 2%; 
+     /* margin-top: 90px;margin-bottom: 80px; */
+     width:95%;height:35px;border:1px solid black;border-radius: 5px;font-size: 15px;color: black;display: flex;direction: column
+ }
+ .audio>image {
+    margin-top: 7px; width: 20px;height: 20px;
+ }
+  .label1 {
+     width: 60%;padding-top: 7px; 
+ }
+ .duration {
+     width: 40%;text-align: right;padding-top: 7px;
+ }
+ .float-btn {
+     background-color: pink;position: fixed;margin-top: 20%;right: 0;width: 100px;height: 30px;display: flex;direction: column
+ }
